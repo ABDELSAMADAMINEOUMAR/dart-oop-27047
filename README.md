@@ -39,3 +39,15 @@ only the whole number, it cuts the decimal part.
 - `print(237 * 17 ~/ 100);` prints 40
 
 I used `~/` for the discount because the money is an `int` in RWF.
+## Part 4: Bug table
+
+| Bug | The line | Why it is wrong | My fix |
+|-----|----------|-----------------|--------|
+| 1 | `String _brand;` and `int _battery;` | The fields have no starting value. In BusCard we gave them `''` and `0`. | `String _brand = '';` and `int _battery = 0;` |
+| 2 | `SmartPhone(String brand, int battery, String system) {` | It does not call the parent constructor. In StudentCard we used `: super(...)`. | Added `: super(brand, battery)` |
+| 3 | `@override void restart()` | `@override` needs the parent to have this method, but Phone has no `restart`. | Removed `@override` |
+| 4 | `p.battery = 100;` | There is a getter for battery but no setter. | Added `set battery(int value)` that accepts only 0 to 100 |
+| 5 | `print(p.battery());` | battery is a getter, so we do not use `()`. | Changed to `print(p.battery);` |
+| Not a bug | `Phone p = new Phone('Tecno', 50);` | `new` is old style but Dart still allows it, so it works. | No fix needed |
+
+After the fixes the program prints 100.
