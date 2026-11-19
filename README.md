@@ -51,3 +51,11 @@ I used `~/` for the discount because the money is an `int` in RWF.
 | Not a bug | `Phone p = new Phone('Tecno', 50);` | `new` is old style but Dart still allows it, so it works. | No fix needed |
 
 After the fixes the program prints 100.
+## Part 5
+My prediction: it prints 1 and then 5.
+
+Why: for `Bag a`, `add()` makes items 1. Then `a.items = -5` is refused by the
+setter because the value is less than 0, so items stays 1 and it prints 1.
+For `BigBag b`, `add()` calls `super.add()` two times, so each `add()` adds 2.
+Calling `add()` two times gives 4. Then `b.items = b.items + 1` makes it 5,
+so it prints 5.
