@@ -59,3 +59,6 @@ setter because the value is less than 0, so items stays 1 and it prints 1.
 For `BigBag b`, `add()` calls `super.add()` two times, so each `add()` adds 2.
 Calling `add()` two times gives 4. Then `b.items = b.items + 1` makes it 5,
 so it prints 5.
+i created a dart file to test and see wheither my predictions are right or wrong, then the real output are : 1 and then 5.
+was I right? Yes, my prediction was correct because I followed how the setter
+refuses -5 and how BigBag adds 2 each time.
